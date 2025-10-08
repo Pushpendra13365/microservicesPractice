@@ -3,6 +3,7 @@ import com.auth_service.config.ResponseConfig;
 import com.auth_service.entity.UserRole;
 import com.auth_service.service.RoleService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,8 +19,7 @@ public class RoleController {
             UserRole userRole = UserRole.valueOf(roleName);
             return roleService.saveUserRole(userRole);
         } catch (IllegalArgumentException e) {
-            return ResponseConfig.generate(org.springframework.http.HttpStatus.BAD_REQUEST,
-                    "Invalid role name. Allowed: ROLE_USER, ROLE_ADMIN, ROLE_MEDIATOR", null);
+            return ResponseConfig.generate(HttpStatus.BAD_REQUEST, "Invalid role name. Allowed: ROLE_USER, ROLE_ADMIN, ROLE_MEDIATOR", null);
         }
     }
 
@@ -29,8 +29,7 @@ public class RoleController {
             UserRole userRole = UserRole.valueOf(name);
             return roleService.getRoleByName(userRole);
         } catch (IllegalArgumentException e) {
-            return ResponseConfig.generate(org.springframework.http.HttpStatus.BAD_REQUEST,
-                    "Invalid role name. Allowed: ROLE_USER, ROLE_ADMIN, ROLE_MEDIATOR", null);
+            return ResponseConfig.generate(HttpStatus.BAD_REQUEST,"Invalid role name. Allowed: ROLE_USER, ROLE_ADMIN, ROLE_MEDIATOR", null);
         }
     }
 }

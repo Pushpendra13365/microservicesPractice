@@ -1,5 +1,5 @@
 server:
-  port: 9090
+  port: 8080
 spring:
   application:
     name: auth-service
@@ -17,3 +17,10 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+
+aes:
+  passphrase: NeoSOFT#N$@
+  iterationCount: 1000
+  keySize: 64
+  salt: 577bd45a18977269694908f80905c32z
+  iv: 8b2b74d130c8896309b776eeb09834b1
