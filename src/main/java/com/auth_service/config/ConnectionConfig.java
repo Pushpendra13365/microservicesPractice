@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ConnectionConfig {
-    public HikariDataSource hikariDataSource(){
+    public HikariDataSource hikariDataSource() {
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl("jdbc:mysql://localhost:3306/microservices");
         config.setUsername("root");

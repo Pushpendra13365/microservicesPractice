@@ -44,10 +44,10 @@
 //        }
 //    }
 //
-////    public String decrypt(String ciphertext){
-////        SecretKey key = generateKey(salt, passphrase);
-////        doFinal()
-////    }
+//    public String decrypt(String ciphertext){
+//        SecretKey key = generateKey(salt, passphrase);
+//        doFinal()
+//    }
 //
 //    private byte[] doFinal(int encryptMode,SecretKey key,String iv, byte[] bytes) {
 //        try {

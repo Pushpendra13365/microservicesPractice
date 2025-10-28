@@ -1,19 +1,18 @@
 package com.auth_service.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "user", schema = "auth")
-@Data
-@AllArgsConstructor
+@Table(name = "users")
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class User {
 
@@ -21,31 +20,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @NotBlank(message = "Username is mandatory")
-//    @NotNull(message = "Username must be between 3 to 100 character")
-//    @Size(min = 3, max = 100)
-//    @Column(name = "user_name")
-//    private String username;
-//
-//    @NotBlank(message = "Password is mandatory")
-//    @NotNull(message = "Password must be between 10 to 100 character")
-//    @Size(min = 10, max = 100)
-//    @Column(name = "password")
-//    private String password;
-//    private int active;
-//
-//    @Column(name = "first_login", nullable = false)
-//    private int firstLogin;
+    @NotBlank(message = "Username is mandatory")
+    @Size(min = 3, max = 50, message = "Username must be between 3 and 50 characters")
+    @Column(name = "username", nullable = false, unique = true, length = 50)
+    private String username;
 
-    @Column(nullable = false)
-    private String name;
+    @NotBlank(message = "Password is mandatory")
+    @Column(name = "password", nullable = false, length = 100)
+    private String password;
 
-    @Column(nullable = false, unique = true)
-    private String email;
-
-    private String phone;
-
-    @Column(nullable = false)
-    private String address;
+    @NotNull(message = "Role is mandatory")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role", nullable = false, length = 20)
+    private Role role;
 
 }
